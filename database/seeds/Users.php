@@ -11,7 +11,7 @@ class Users extends Seeder
      */
     public function run()
     {
-       DB::table('users')->delete();
+        DB::table('users')->delete();
         DB::table('users')->insert([
         	['id'=>1,'name'=>'admin','email'=>'admin@gmail.com','password'=>bcrypt('123456')],
         	['id'=>2,'name'=>'editor','email'=>'editor@gmail.com','password'=>bcrypt('123456')],

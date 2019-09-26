@@ -30,12 +30,6 @@ class documentcontroller extends Controller
     	$intro = document::paginate(4);
     	return view('admin/document/listdoc',['intro'=>$intro]);
     }
-
-    public function getdel($id){
-    	$intro = document::find($id);
-    	$intro->delete();
-    	return redirect('admin/document/listdoc');
-    }
     public function getedit($id){
     	$intro = document::find($id);
     	return view('admin/document/editdoc',['intro'=>$intro]);
@@ -52,9 +46,7 @@ class documentcontroller extends Controller
                 'number.required' => 'Bạn Chưa Nhập Số / Kí Hiệu!',
                 'address.required' => 'Bạn Chưa Nhập Địa Chỉ!',
                 'number.required' => 'Bạn Chưa Nhập Nội Dung!'
-            ]
-    		
-    			
+            ]	
     	);;
     	$intro->number =$Request->number;
     	$intro->address =$Request->address;
@@ -66,6 +58,11 @@ class documentcontroller extends Controller
     public function getvb(){
         $intro = document::all();
         return view('pages/van-ban-che-do',['int'=>$intro]);
+    }
+    public function getdel($id){
+        $intro = document::find($id);
+        $intro->delete();
+        return redirect('admin/document/listdoc');
     }
 
 }

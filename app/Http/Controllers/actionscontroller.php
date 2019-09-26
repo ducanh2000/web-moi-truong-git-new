@@ -54,19 +54,14 @@ class actionscontroller extends Controller
     	$ac->save();
     	return redirect('admin/actions/editactions/'.$id)->with('thongbao','Sửa Thành Công!');
     }
-    public function getdel($id){
-    	$ac = action::find($id);
-    	$ac->delete();
-    	return redirect('admin/actions/listactions');
-    }
-    public function getsearchac(Request $Request){
-        $search = $Request->get('search');
-        $posts = action::where('title','like','%'.$search.'%')->paginate(4);
-        return view('admin/action/listaction',['intro'=>$posts]);
-    }
     public function getcontentac($slug,$id){
         $gt = action::find($id);
        
         return view('pages/hoat-dong',['gt'=>$gt]);
+    }
+    public function getdel($id){
+        $ac = action::find($id);
+        $ac->delete();
+        return redirect('admin/actions/listactions');
     }
 }

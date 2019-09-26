@@ -23,7 +23,7 @@ class infocus extends Controller
                 'content.required' => 'Bạn Chưa Nhập Nội Dung!'
     		]
     	);
-        $home = DB::table('news')->limit(4)->get();
+        $home = DB::table('customer')->limit(4)->get();
     	$intro = new customer;
     	$intro->company =$Request->company;
     	$intro->nameproject =$Request->project;

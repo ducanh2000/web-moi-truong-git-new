@@ -67,11 +67,6 @@ class newscontroller extends Controller
     	$intro->save();
     	return redirect('admin/news/editnews/'.$id)->with('thongbao','Sửa Thành Công!');
     }
-    public function getdel($id){
-    	$intro = news::find($id);
-    	$intro->delete();
-    	return redirect('admin/news/listnews');
-    }
     // pages user
     public function gettt(){
         $intro = news::all();
@@ -85,9 +80,9 @@ class newscontroller extends Controller
             'intro'=>$lq
     ]);
     }
-    public function getsearch(Request $Request){
-        $search = $Request->get('search');
-        $posts = news::where('title','like','%'.$search.'%')->paginate(4);
-        return view('admin/news/listnews',['intro'=>$posts]);
+    public function getdel($id){
+        $intro = news::find($id);
+        $intro->delete();
+        return redirect('admin/news/listnews');
     }
 }

@@ -56,6 +56,7 @@ class ContactController extends Controller
         return redirect('admin/contact/editcontact/'.$id)->with('thongbao','Sửa Thành Công!'); 
     }
     public function getdel($id){
+        // dd('a');
         $lh = contact::find($id);
         $lh ->delete();
         return redirect('admin/contact/listcontact'); 
