@@ -15,18 +15,15 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
-
         if(Auth::check())
             {
                 return $next($request);
+                // return redirect('admin');
             }
             else
             {
-                return redirect('login');
+                return redirect('admin/login');
             }
 
-
-
-    
     }
 }

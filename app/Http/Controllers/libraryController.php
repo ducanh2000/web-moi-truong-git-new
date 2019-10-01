@@ -47,23 +47,16 @@ class libraryController extends Controller
         $intro->save();
     	return redirect('admin/library/editlibrary/'.$id)->with('thongbao','Sửa Thành Công!');
     }
-    public function getdel($id){
-    	$intro = library::find($id);
-    	$intro->delete();
-    	return redirect('admin/library/listlibrary');
-    }
-    // pages user
-
-    public function getall(){
-        $intro = library::paginate(9);
-        return view('pages/thu-vien',[
-            'intro'=>$intro
-        ]);
-    }
     public function detail($id){
         $intro = library::find($id);
         return view('pages/video-chitiet',[
             'vddt'=>$intro
         ]);
+    }
+
+     public function getdel($id){
+        $intro = library::find($id);
+        $intro->delete();
+        return redirect('admin/library/listlibrary');
     }
 }

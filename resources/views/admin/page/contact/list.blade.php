@@ -1,4 +1,3 @@
-
 @extends('admin.layout.index')
 @section('title')
                     Danh sách contact

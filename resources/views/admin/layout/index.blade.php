@@ -27,7 +27,7 @@
     <link href="{{asset('vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-
+    <link href="{{asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
@@ -36,49 +36,21 @@
   <body class="nav-md">
      <div class="container body">
       <div class="main_container">
-{{-- <<<<<<< HEAD
-
-        @include('admin.layout.header')
-
-
-=======
- --}}
         {{-- header --}}
           @include('admin.layout.header')
 
         {{-- endheader --}}
-
-{{-- >>>>>>> b36a1655da1af26842fbc3c86d0f293a555a3b89 --}}
         <!-- top navigation -->
        @include('admin.layout.nav')
         <!-- /top navigation -->
 
         <!-- page content -->
-{{-- <<<<<<< HEAD --}}
+
 
         <div class="right_col" role="main">
           <!-- top tiles -->
           @yield('main')
         </div>
-
-{{-- ======= --}}
-        {{-- <div class="right_col" role="main"> --}}
-          {{-- @include('admin.layout.main') --}}
-          
-          {{-- @yield('main') --}}
-
-          
-
-{{--=======--}}
-        {{--<div class="right_col" role="main">--}}
-          {{--<!-- top tiles -->--}}
-          {{--@yield('main')--}}
-        {{--</div>--}}
-{{-->>>>>>> --}}
-{{-- >>>>>>> b36a1655da1af26842fbc3c86d0f293a555a3b89 --}}
-        <!-- /page content -->
-
-        <!-- footer content -->
         @include('admin.layout.footer')
         <!-- /footer content -->
       </div>
@@ -121,9 +93,27 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
     <script src="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+    
+    <script src="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
 	<script src="{{asset('js/xx.js')}}"></script>
+    <script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+
   </body>
 </html>

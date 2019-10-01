@@ -52,19 +52,14 @@ class servicescontroller extends Controller
     	$sv->save();
     	return redirect('admin/services/editservices/'.$id)->with('thongbao','Sửa Thành Công!');
     }
-    public function getdel($id){
-    	$sv = services::find($id);
-    	$sv->delete();
-    	return redirect('admin/services/listservices');
-    }
-    public function getsearchsv(Request $Request){
-        $search = $Request->get('search');
-        $posts = services::where('title','like','%'.$search.'%')->paginate(4);
-        return view('admin/service/listservice',['intro'=>$posts]);
-    }
     public function getcontentsv($slug,$id){
         $gt = services::find($id);
        
         return view('pages/dich-vu',['gt'=>$gt]);
+    }
+     public function getdel($id){
+        $sv = services::find($id);
+        $sv->delete();
+        return redirect('admin/services/listservices');
     }
 }

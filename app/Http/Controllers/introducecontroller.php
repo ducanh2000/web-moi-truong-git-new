@@ -66,6 +66,7 @@ class introducecontroller extends Controller
     	return redirect('admin/introduce/editintro/'.$id)->with('thongbao','Sửa Thành Công!');
     }
     public function getdel($id){
+        // dd('a');
     	$intro = introduce::find($id);
     	$intro->delete();
     	return redirect('admin/introduce/listintro');
@@ -79,11 +80,6 @@ class introducecontroller extends Controller
         $gt = introduce::find($id);
        
         return view('pages/gioi-thieu',['gt'=>$gt]);
-    }
-    public function getsearch(Request $Request){
-        $search = $Request->get('search');
-        $posts = introduce::where('name','like','%'.$search.'%')->paginate(4);
-        return view('admin/introduce/listintroduce',['intro'=>$posts]);
     }
     public function gethome(){
         $contact =DB::table('contact')->where('status',1)->limit(4)->get();
@@ -115,4 +111,10 @@ class introducecontroller extends Controller
     public function getadmin(){
         return view('admin/layout/main');
     }
+    // public function getdel($id)
+    // {
+    //     // dd('a');
+    //     DB::table('introduce')->where('id',$id)->delete();
+    //     return redirect()->route('introduce.getlis');
+    // }
 }

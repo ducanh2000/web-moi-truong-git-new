@@ -11,12 +11,12 @@ class footerController extends Controller
     {
         $array['footer']=DB::table('footer')
                         ->get();
-        return view('admin.page.footer.list',$array);
+        return view('admin.footer.list',$array);
     }
      public function add()
     {
         $array['footer']=DB::table('footer')->get();
-        return view('admin.page.footer.add',$array);
+        return view('admin.footer.add',$array);
     }
 
     public function store(Request $request)
@@ -26,7 +26,7 @@ class footerController extends Controller
         $validateData = $request->validate([
             'icon' => 'required|image',
             'content' => 'required|min:5|max:255',
-            'address' => 'required|min:20|max:255',
+            'address' => 'required|min:5|max:255',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'email' => 'required|email|unique:footer,email'
         ]);
@@ -51,14 +51,14 @@ class footerController extends Controller
      public function edit($id)
     {
         $array['footer']=DB::table('footer')->find($id);
-        return view('admin.page.footer.edit',$array);
+        return view('admin.footer.edit',$array);
     }
 
     public function update(Request $request,$id)
     {
         $validateData = $request->validate([
             'content' => 'required|min:5|max:255',
-            'address' => 'required|min:20|max:255',
+            'address' => 'required|min:5|max:255',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'email' => 'required|email'
         ]);
