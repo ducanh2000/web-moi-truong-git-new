@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             ['id'=>3,'name'=>'user','email'=>'user@gmail.com','password'=>bcrypt('123456'),'phone'=>'0981188256','level'=>3,'status'=>1],
         ]);
         DB::table('library')->insert([
-            ['id'=>1,'title'=>'xã hội','kind'=>'image','link'=>'anh_3.jpg'],
+            ['id'=>1,'title'=>'xã hội','kind'=>'image','link'=>'anh-3.jpg'],
             ['id'=>2,'title'=>'thế giới','kind'=>'image','link'=>'index_16.jpg'],
         ]);
         DB::table('users')->insert([

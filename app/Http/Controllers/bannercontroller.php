@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\banner;
 use Illuminate\Http\Request;
-
+use DB;
 
 class bannercontroller extends Controller
 {
@@ -37,7 +37,7 @@ class bannercontroller extends Controller
         return redirect('admin/banner/addbanner')->with('thongbao','Thêm Thành Công!');
     }
     public function getlist(){
-        $ac = banner::paginate(4);
+        $ac =DB::table('banner')->get();
         return view('admin/banner/listbanner',['intro'=>$ac]);
     }
     public function getedit($id){

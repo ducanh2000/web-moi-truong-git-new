@@ -13,11 +13,13 @@
         <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
-        <span>Welcome,</span>
-        <h2>John Doe</h2>
+        <h2>@if (Auth::check())
+          {{ Auth::user()->name }}
+        @endif</h2>
+        <h2><a href="#"><i class="fa fa-circle text-success"></i> Online</a></h2>
       </div>
     </div>
-    <br />
+    <br/>
 
     <!-- sidebar menu -->
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -104,11 +106,11 @@
           </li>
         </ul>
         <ul class="nav side-menu">
-          {{-- <li><a href="{{route('getlistcon')}}"><i class="fa fa-windows"></i> Khách hàng liên hệ </a>  --}}            
+          <li><a href="{{route('getlistin')}}"><i class="fa fa-windows"></i> Khách hàng liên hệ </a>             
 
           </li>
         </ul>
-        
+
       </div>
 
 

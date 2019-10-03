@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\news;
 use Illuminate\Http\Request;
+use DB;
 
 class newscontroller extends Controller
 {
@@ -19,22 +20,26 @@ class newscontroller extends Controller
     			'title.required' => 'Bạn Chưa Nhập Tên!'
     		]
     	);
-        if ($Request->hasFile('images')) {
-            $file=$Request->file('images');
+        if ($Request->hasFile('image')) {
+            $file=$Request->file('image');
             $file->move('images',$file->getClientOriginalName());
         }
+
     	$intro = new news;
     	$intro->images =$Request->images;
-    	$intro->title =$Request->title;
+    	$intro->title  =$Request->title;
         $intro->kindnew =$Request->kindnew;
     	$intro->summary =$Request->summary;
     	$intro->content =$Request->content;
     	$intro->slug=to_slug($Request->title).time();
     	$intro->save();
     	return redirect('admin/news/addnews')->with('thongbao','Thêm Thành Công!');
+        // return redirect()->route('user.list')->with('thongbao','Thêm Thành Công!');
     }
     public function getlist(){
-    	$intro = news::paginate(4);
+    	// $intro = news::paginate(4);
+        // $intro['news']=DB::table('news')->get();
+        $intro = DB::table('news')->get();
     	return view('admin/news/listnews',['intro'=>$intro]);
     }
     public function getedit($id){

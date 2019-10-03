@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\models\users;
 use Illuminate\Http\Request;
@@ -38,17 +37,19 @@ class UserController extends Controller
 	public function update(Request $request,$id)
 	{
 		// dd('a');
-		$data =users::find($id);
-		// dd($data);
-		$validateData = $request->validate([
-			'email' => 'required|email|unique:footer,email'
-		]);
-		// dd($validateData);
+		// $data =users::find($id);
+		// // dd('data');
+		// $validateData = $request->validate([
+		// 	'email' => 'required|email|unique:email'
+		// ]);
+		// [
+  //               'email.required' => 'Bạn Chưa Nhập Email!'
+  //       ]
+		// dd('validateData');
 		DB::table('users')->update([
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' =>bcrypt($request->password),
-			
 		]);
 
 		return redirect()->route('user.list'.$id);

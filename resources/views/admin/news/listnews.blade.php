@@ -29,7 +29,7 @@
                   <td class="sorting_1">{{substr($it->title, 0, 55)}}</td>
                   <td>{{$it->kindnew}}</td>
                   <td>{!!substr($it->summary, 0, 55)!!}</td>
-                  <td>{{substr($it->content, 0, 255)}}...</td>
+                  <td>{!!substr($it->content, 0, 255)!!}</td>
                   <td><img src="{{asset('images/'.$it->images)}}" alt="" width="100px"></td>
                   <td>{{$it->created_at}}</td>
                   <td>
@@ -46,6 +46,7 @@
             </table>
           </div></div></div>
         </div>
+        {{-- {{ $intro->links() }} --}}
       </div>
     </div>
   </div>

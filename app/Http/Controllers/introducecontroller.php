@@ -6,6 +6,7 @@ use App\introduce;
 use App\news;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+// use DB;
 
 class introducecontroller extends Controller
 {
@@ -39,7 +40,7 @@ class introducecontroller extends Controller
     	return redirect('admin/introduce/addintro')->with('thongbao','Thêm Thành Công!');
     }
     public function getlist(){
-    	$intro = introduce::paginate(4);
+    	$intro = DB::table('introduce')->get();
     	return view('admin/introduce/listintroduce',['intro'=>$intro]);
     }
     public function getedit($id){

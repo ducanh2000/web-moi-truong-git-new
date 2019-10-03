@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\document;
 use Illuminate\Http\Request;
+use DB;
 
 class documentcontroller extends Controller
 {
@@ -27,7 +28,7 @@ class documentcontroller extends Controller
     	return redirect('admin/document/adddoc')->with('thongbao','Thêm Thành Công!');
     }
     public function getlist(){
-    	$intro = document::paginate(4);
+    	$intro =DB::table('document')->get();
     	return view('admin/document/listdoc',['intro'=>$intro]);
     }
     public function getedit($id){

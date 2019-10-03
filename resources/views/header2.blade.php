@@ -158,7 +158,7 @@
                     <li><a class="abc"><i class="fas fa-envelope "></i><a class="lang" href="#" key="thudientu">Thư Điện Tử</a></li></a>
                     <li><a class="abc"><i class="fas fa-rss-square " key=""></i><a class="lang" href="#">RSS</a></li></a>
                     <li><a class="abc"><i class="fas fa-sitemap "></i><a class="lang" href="#"  key="sodo">Sơ đồ</a></li></a>
-                    <li><a class="abc"><i class="fas fa-user "></i><a class="lang" href="login"  key="dangnhap">Đăng Nhập</a></li></a>
+                    <li><a class="abc"><i class="fas fa-user "></i><a class="lang" href="admin/login"  key="dangnhap">Đăng Nhập</a></li></a>
                     <li><a class="abc"><a class=" lang translate" id="en" href="javascript:void(0)"><i class="fas fa-flag" ></i>English</a></li></a>
                     <li><a class="abc"><a class="lang translate" id="vie" href="javascript:void(0)"><i class="fas fa-flag" ></i>VietNamese</a></li></a>
                 </ul>

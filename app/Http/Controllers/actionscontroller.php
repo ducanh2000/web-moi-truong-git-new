@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\action;
 use Illuminate\Http\Request;
+use DB;
 
 class actionscontroller extends Controller
 {
@@ -28,7 +29,7 @@ class actionscontroller extends Controller
     	return redirect('admin/actions/addactions')->with('thongbao','Thêm Thành Công!');
     }
     public function getlist(){
-    	$ac = action::paginate(4);
+    	$ac =DB::table('action')->get();
     	return view('admin/action/listaction',['intro'=>$ac]);
     }
     public function getedit($id){

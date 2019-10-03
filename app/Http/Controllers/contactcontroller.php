@@ -13,10 +13,10 @@ class ContactController extends Controller
     public function postadd(Request $Request){ 
         $this->validate($Request,
             [
-                'name' => 'required',
+                'name' => 'required|min:5',
                 'email' => 'required',
-                'phone' => 'required',
-                'content' => 'required'
+                'phone' => 'required|min:10|max:11',
+                'content' => 'required|min:5'
             ],
             [
                 'name.required' => 'Bạn Chưa Nhập Tên!',
@@ -31,15 +31,15 @@ class ContactController extends Controller
         $lh->phone =$Request->phone;
         $lh->content =$Request->content;
         $lh->save();
-        return redirect('lienhe')->with('thongbao','Cảm ơn quí khách đã liên hệ!');                    
+        return redirect('lienhe')->with('thongbao','Cảm ơn quý khách đã liên hệ!');                    
     }
     public function getlist(){
-        $data = contact::paginate(10);
+        $data = DB::table('contact')->get();
         return view('admin/contact/listcontact',[
             'intro'=>$data
         ]);
     }
-     public function getedit($id){
+    public function getedit($id){
         $data = contact::find($id);
         return view('admin/contact/editcontact',[
             'intro'=>$data

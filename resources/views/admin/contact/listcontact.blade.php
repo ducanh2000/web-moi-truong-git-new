@@ -44,6 +44,7 @@
               </tbody>
             </table>
           </div>
+          {{ $intro->links() }}
         </div>
       </div>
     </div>

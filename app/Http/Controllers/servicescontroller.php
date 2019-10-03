@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\services;
 use Illuminate\Http\Request;
+use DB;
 
 class servicescontroller extends Controller
 {
@@ -28,7 +29,7 @@ class servicescontroller extends Controller
     	return redirect('admin/services/addservices')->with('thongbao','Thêm Thành Công!');
     }
     public function getlist(){
-    	$sv = services::paginate(4);
+    	$sv =DB::table('services')->get();
     	return view('admin/service/listservice',['intro'=>$sv]);
     }
     public function getedit($id){

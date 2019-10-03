@@ -6,13 +6,18 @@ use Illuminate\Http\Request;
 use App\customer;
 class infocus extends Controller
 {
+    public function getlist()
+    {
+        $array['customers']=DB::table('customer')->get();
+        return view('admin.customer.listcustomer',$array);
+    }
     public function in(Request $Request){
     	$this->validate($Request,
     		[
     			'company' => 'required',
                 'project' => 'required',
                 'address' => 'required',
-                'phone' => 'required',
+                'phone'   => 'required|min:10|max:11',
                 'content' => 'required'
     		],
     		[
@@ -32,6 +37,11 @@ class infocus extends Controller
     	$intro->content =$Request->content;
     	$intro->save();
     	$check = true;
-        return redirect('/') ;
+        return redirect('/')->with('thongbao','bạn đã thêm thành công!') ;
+    }
+    public function getdel($id)
+    {
+        DB::table('customer')->where('id',$id)->delete();
+        return redirect()->route('getlistin');
     }
 }

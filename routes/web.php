@@ -103,7 +103,7 @@ Route::get('/hoi-dap','contactcontroller@question')->name('hoi-dap');
 
 // Route::get('login','LoginController@GetLogin')->name('login');
 // Route::post('login','LoginController@PostLogin')->name('postlogin');
-Route::post('sendinfocustomer','infocus@in')->name('postinfo');
+
 
 Route::group(['prefix' => 'admin',], function() {
             Route::get('login','LoginController@GetLogin')->middleware('CheckLogout')->name('login');
@@ -182,6 +182,10 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function(){
         Route::post('editcontact/{id}','contactcontroller@postedit')->name('posteditcon');
         Route::get('delete/{id}','contactcontroller@getdel')->name('getdelcon');
     });
+    Route::prefix('customer')->group(function () {
+        Route::get('listcustomer','infocus@getlist')->name('getlistin');
+        Route::get('delete/{id}','infocus@getdel')->name('getin');
+    });
 
     Route::get('profile','ExamplesController@GetProfile');
     Route::get('register','ExamplesController@GetRegister')->name('register');
@@ -215,10 +219,11 @@ Route::prefix('van-ban')->group(function(){
 Route::prefix('bao-cao')->group(function(){
     Route::get('/','BaseController@getbc')->name('getbc');
 });
-// Route::get('/login','homecontroller@gethome')->name('gethome');
 Route::get('lienhe','contactcontroller@getlh')->name('getlh');
 Route::post('lienhe','contactcontroller@postadd')->name('postaddlh');
 
 
 Route::get('/','introducecontroller@gethome')->name('xxx');
+
+Route::post('sendinfocustomer','infocus@in')->name('postinfo');
 
